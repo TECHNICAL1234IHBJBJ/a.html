@@ -1,0 +1,51 @@
+<html>
+<script type="text/javascript">
+
+  function checkPassword(str)
+  {
+    var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    return re.test(str);
+  }
+
+  function checkForm(form)
+  {
+    if(form.firstname.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.firstname.focus();
+      return false;
+    }
+    re = /^\w+$/;
+    if(!re.test(form.firstname.value)) {
+      alert("Error: Username must contain only letters, numbers and underscores!");
+      form.firstname.focus();
+      return false;
+    }
+      if(!checkPassword(form.password.value)) {
+        alert("The password you have entered is not valid!");
+        form.password.focus();
+        return false;
+      }
+     else {
+      alert("Error: Please check that you've entered and confirmed your password!");
+      form.password.focus();
+      return false;
+    }
+    return true;
+  }
+
+</script>
+
+<form method="POST" action="..." onsubmit="return checkForm(this);">
+<center>
+<table align="center">
+<tr><td style="background-color:#637a91">get started today</td><td></td></tr>
+<tr><td>Firstname</td><td>Lastname</td></tr>
+<tr><td><input type="text" name="firstname"></td><td><input type="text" name="Lastname"></td></tr>
+<tr><td>Emailaddress</td><td>Password</td></tr>
+<tr><td><input type="email" name="emailid"></td><td><input type="password" name="password"></td></tr>
+<tr><td style="background-color:#5fcf80"><input type="submit" name="submit" value="claim your free trail"></td><td></td></tr>
+</table>
+</center>
+</form>
+</html>
+
